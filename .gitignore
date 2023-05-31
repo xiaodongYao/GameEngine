@@ -1,0 +1,10 @@
+# Directory
+
+.git/
+.vs/
+bin/
+bin-int/
+
+# file
+
+*.user
