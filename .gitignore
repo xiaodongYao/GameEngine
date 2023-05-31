@@ -1,10 +1,10 @@
-# Directory
+# Directories
 
 .git/
 .vs/
 bin/
 bin-int/
 
-# file
+# Files
 
 *.user
