@@ -6,13 +6,13 @@ public:
 	SendBox() {};
 
 	~SendBox() {};
+
+
 };
 
-
-
-int main()
+Hazel::Application* Hazel::CreateApplication()
 {
-	SendBox* sendBox = new SendBox();
-	sendBox->run();
-	delete sendBox;
+	return new SendBox();
 }
+
+
