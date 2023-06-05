@@ -5,6 +5,9 @@
 bin/
 bin-int/
 
-# Files
 
+# Files
 *.user
+*.sln
+*.vcxproj
+*.filters

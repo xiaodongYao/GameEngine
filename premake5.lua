@@ -27,7 +27,7 @@ project "Hazel"
 
 	includedirs
 	{
-		"%{prj.name}/vendor/spdlog/inlucde"
+		"%{prj.name}/vendor/spdlog/include"
 	}
 
 
@@ -76,7 +76,7 @@ project "SandBox"
 
 	includedirs
 	{
-		"Hazel/vendor/spdlog/inlucde",
+		"Hazel/vendor/spdlog/include",
 		"Hazel/src"
 	}
 
