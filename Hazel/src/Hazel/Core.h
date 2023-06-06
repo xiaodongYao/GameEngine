@@ -10,3 +10,5 @@
 	#error hazel only support winodws!
 
 #endif // HZ_PLATFORM_WINDOW
+
+#define BIT(x) (1<<x)

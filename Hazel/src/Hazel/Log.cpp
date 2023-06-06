@@ -8,7 +8,8 @@ namespace Hazel {
 
 	void Log::Init()
 	{
-		spdlog::set_pattern("%^[%Y:%m:%d %H:%M:%S:%e] [ThreadId:%t] [%=6n][%=7l] %v%$");
+		//spdlog::set_pattern("%^[%Y:%m:%d %H:%M:%S:%e] [ThreadId:%t] [%=6n][%=7l] %v%$");
+		spdlog::set_pattern("%^[%Y:%m:%d %H:%M:%S:%e] [%=6n][%=7l] %v%$");
 		s_CoreLogger = spdlog::stdout_color_mt("HAZEL");
 		s_CoreLogger->set_level(spdlog::level::trace);
 
