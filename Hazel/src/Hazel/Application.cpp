@@ -4,24 +4,21 @@
 #include "Log.h"
 
 namespace Hazel {
-	Application::Application() {}
-
-	Application::~Application() {}
-
-	void Application::run() 
+	Application::Application() 
 	{
-		WindowResizeEvent e(1200,720);
-		if (e.IsInCategory(EventCategoryApplication))
+		m_Window = std::unique_ptr<Window>(Window::Create());
+	}
+
+	Application::~Application() 
+	{
+	
+	}
+
+	void Application::run()
+	{
+		while (m_Running)
 		{
-			HZ_TRACE(e);
+			m_Window->OnUpdate();
 		}
-
-		if (e.IsInCategory(EventCategoryInput))
-		{
-			HZ_TRACE(e);
-		}
-
-
-		while (true);
 	}
 }
