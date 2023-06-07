@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Hazel {
 	class HZ_API MouseMovedEvent :public Event
 	{

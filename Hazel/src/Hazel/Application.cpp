@@ -1,3 +1,4 @@
+#include "Hzpch.h"
 #include "Application.h"
 #include "Events/ApplicationEvent.h"
 #include "Log.h"
@@ -7,7 +8,7 @@ namespace Hazel {
 
 	Application::~Application() {}
 
-	void Application::run()
+	void Application::run() 
 	{
 		WindowResizeEvent e(1200,720);
 		if (e.IsInCategory(EventCategoryApplication))

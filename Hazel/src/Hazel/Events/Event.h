@@ -1,8 +1,5 @@
 #pragma once
 
-#include <string>
-#include <functional>
-#include <ostream>
 #include "Hazel/core.h"
 
 namespace Hazel {
