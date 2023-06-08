@@ -19,7 +19,7 @@ namespace Hazel {
 		}
 
 		EVENT_CLASS_TYPE(MouseMoved)
-			EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryMouse)
+		EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryMouse)
 
 	private:
 		float m_MouseX, m_MouseY;
@@ -41,7 +41,7 @@ namespace Hazel {
 		}
 
 		EVENT_CLASS_TYPE(MouseScrolled)
-			EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryMouse)
+		EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryMouse)
 
 	private:
 		float m_XOffset, m_YOffset;
