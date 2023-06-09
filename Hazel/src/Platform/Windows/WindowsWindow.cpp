@@ -1,6 +1,6 @@
 #include "hzpch.h"
 #include "WindowsWindow.h"
-
+#include "glad/glad.h"
 namespace Hazel {
 
 	static bool s_GLFWInitialized = false;
@@ -44,12 +44,14 @@ namespace Hazel {
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, props.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		HZ_CORE_ASSERT(status, "Fail to Initialize Glad");
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetSync(true);
 
 
 		//回调
-		
+
 		//窗口大小回调
 		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int hegiht) {
 
@@ -59,7 +61,7 @@ namespace Hazel {
 
 			WindowResizeEvent event(width, hegiht);
 			data.EventCallback(event);
-		});
+			});
 
 		glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window) {
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
@@ -67,83 +69,83 @@ namespace Hazel {
 			WindowCloseEvent e;
 
 			data.EventCallback(e);
-		});
+			});
 
-		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods){
+		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods) {
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
 			switch (action)
 			{
-				case GLFW_PRESS:
-				{
-					keyPressedEvent e(key, 0);
-					data.EventCallback(e);
-					break;
-				}
-
-				case GLFW_REPEAT:
-				{
-					keyPressedEvent e(key, 1);
-					data.EventCallback(e);
-					break;
-				}
-
-				case GLFW_RELEASE:
-				{
-					KeyReleasedEvent e(key);
-					data.EventCallback(e);
-					break;
-				}
+			case GLFW_PRESS:
+			{
+				keyPressedEvent e(key, 0);
+				data.EventCallback(e);
+				break;
 			}
-		});
-		
-		
+
+			case GLFW_REPEAT:
+			{
+				keyPressedEvent e(key, 1);
+				data.EventCallback(e);
+				break;
+			}
+
+			case GLFW_RELEASE:
+			{
+				KeyReleasedEvent e(key);
+				data.EventCallback(e);
+				break;
+			}
+			}
+			});
+
+
 
 		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods) {
-			
+
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
 			switch (action)
 			{
-				case GLFW_PRESS:
-				{
-					MouseButtonPressedEvent e(button);
-					data.EventCallback(e);
-					break;
-				}
-
-				case GLFW_RELEASE:
-				{
-					MouseButtonReleasedEvent e(button);
-					data.EventCallback(e);
-					break;
-				}
+			case GLFW_PRESS:
+			{
+				MouseButtonPressedEvent e(button);
+				data.EventCallback(e);
+				break;
 			}
-			
-		});
+
+			case GLFW_RELEASE:
+			{
+				MouseButtonReleasedEvent e(button);
+				data.EventCallback(e);
+				break;
+			}
+			}
+
+			});
 
 
 		glfwSetScrollCallback(m_Window, [](GLFWwindow* window, double xOffset, double yOffset) {
-			
+
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
 			MouseScrolledEvent e((float)xOffset, (float)yOffset);
 
 			data.EventCallback(e);
-			
-		});
+
+			});
 
 		glfwSetCursorPosCallback(m_Window, [](GLFWwindow* window, double xPos, double yPos) {
-			
+
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
 			MouseMovedEvent e((float)xPos, (float)yPos);
 
 			data.EventCallback(e);
-			
-		});
 
-		
+			});
+
+
 	}
 
 	void WindowsWindow::ShutDown()
