@@ -15,9 +15,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"]="Hazel/vendor/GLFW/include"
 IncludeDir["Glad"]="Hazel/vendor/Glad/include"
+IncludeDir["ImGui"]="Hazel/vendor/imgui"
 
 include "Hazel/vendor/GLFW" --把GLFW项目下的premake添加到此文件中
 include "Hazel/vendor/Glad"
+include "Hazel/vendor/imgui"
 
 project "Hazel"
 	location "Hazel"
@@ -41,13 +43,15 @@ project "Hazel"
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
-		"%{IncludeDir.Glad}"
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links
 	{
 		"Glad",
 		"GLFW",
+		"ImGui",
 		"opengl32.lib"
 	}
 
