@@ -6,4 +6,4 @@
 	url = https://Github.com/xiaodongYao/glfw
 [submodule "Hazel/vendor/imgui"]
 	path = Hazel/vendor/imgui
-	url = https://github.com/xiaodongYao/imgui
+	url = https://github.com/xiaodongYao/imgui.git
