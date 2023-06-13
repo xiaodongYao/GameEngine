@@ -4,6 +4,7 @@
 #include "Log.h"
 
 #include <glad/glad.h>
+#include "Input.h"
 namespace Hazel {
 
 #define BIND_EVENT_FN(x) std::bind(&Application::x,this,std::placeholders::_1)
@@ -56,10 +57,14 @@ namespace Hazel {
 		while (m_Running)
 		{
 			glClearColor(1, 0, 1, 1); //pink
+
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
+
+			auto [x, y] = Input::GetMousePosition();
+			HZ_CORE_INFO("{0},{1}", x, y);
 
 			m_Window->OnUpdate();
 		}
