@@ -1,6 +1,9 @@
 #pragma once
 
 #include "Hazel/Events/Event.h"
+#include "Events/ApplicationEvent.h"
+#include "Events/KeyEvent.h"
+#include "Events/MouseEvent.h"
 
 namespace Hazel {
 	class HZ_API Layer
