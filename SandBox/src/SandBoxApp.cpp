@@ -38,7 +38,7 @@ public:
 	SendBox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverLay(new Hazel::ImGuiLayer());
+		//PushOverLay(new Hazel::ImGuiLayer());
 	};
 
 	~SendBox() {};
