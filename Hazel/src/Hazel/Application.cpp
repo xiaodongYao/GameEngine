@@ -17,7 +17,7 @@ namespace Hazel {
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent)); //set callback function
 
 		m_ImGuiLayer = new ImGuiLayer();
-		PushLayer(m_ImGuiLayer);
+		PushOverLay(m_ImGuiLayer);
 	}
 
 	Application::~Application()
