@@ -18,15 +18,17 @@ IncludeDir["Glad"]="Hazel/vendor/Glad/include"
 IncludeDir["ImGui"]="Hazel/vendor/imgui"
 IncludeDir["glm"]="Hazel/vendor/glm"
 
-include "Hazel/vendor/GLFW" --°ÑGLFWÏîÄ¿ÏÂµÄpremakeÌí¼Óµ½´ËÎÄ¼þÖÐ
+include "Hazel/vendor/GLFW" --ï¿½ï¿½GLFWï¿½ï¿½Ä¿ï¿½Âµï¿½premakeï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
 include "Hazel/vendor/Glad"
 include "Hazel/vendor/imgui"
 
 project "Hazel"
 	location "Hazel"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
+	cppdialect "c++17"
+	staticruntime "on"
+
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -40,6 +42,11 @@ project "Hazel"
 		"%{prj.name}/src/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl"
+	}
+
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
 	}
 
 	includedirs
@@ -61,7 +68,6 @@ project "Hazel"
 	}
 
 	filter "system:windows"
-		cppdialect "c++17"
 		systemversion "latest"
 
 		defines
@@ -72,10 +78,10 @@ project "Hazel"
 			"GLFW_INCLUDE_NONE"
 		}
 
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .."/SandBox/\"")
-		}
+		--postbuildcommands
+		--{
+			--("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .."/SandBox/\"")
+		--}
 
 	filter "configurations:Debug"
 	defines "HZ_DEBUG"
@@ -97,7 +103,8 @@ project "SandBox"
 	location "SandBox"
 	kind "consoleApp"
 	language "C++"
-	staticruntime "off"
+	cppdialect "c++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -112,6 +119,7 @@ project "SandBox"
 	{
 		"Hazel/vendor/spdlog/include",
 		"Hazel/src",
+		"Hazel/vendor",
 		"%{IncludeDir.glm}"
 	}
 
@@ -121,7 +129,6 @@ project "SandBox"
 	}
 
 	filter "system:windows"
-		cppdialect "c++17"
 		systemversion "latest"
 
 

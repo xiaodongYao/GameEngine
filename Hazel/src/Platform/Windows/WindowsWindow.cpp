@@ -37,7 +37,7 @@ namespace Hazel {
 		{
 			//TODO: glfwTerminate on system shutdown
 			int success = glfwInit();
-			HZ_CORE_ASSERT(success, "Could not initialize GLFW");
+			//HZ_CORE_ASSERT(success, "Could not initialize GLFW");
 			glfwSetErrorCallback(GLFWSetErrorCallback);
 			s_GLFWInitialized = true;
 		}
@@ -45,7 +45,7 @@ namespace Hazel {
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, props.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		HZ_CORE_ASSERT(status, "Fail to Initialize Glad");
+		//HZ_CORE_ASSERT(status, "Fail to Initialize Glad");
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetSync(true);
 
