@@ -1,10 +1,10 @@
 #pragma once
 
-#include "GLFW/glfw3.h"
 #include "Hazel/Window.h"
 #include "Hazel/Events/ApplicationEvent.h"
-#include "Hazel/Events/KeyEvent.h"
-#include "Hazel/Events/MouseEvent.h"
+#include "Hazel/Renderer/GraphicsContext.h"
+
+#include <GLFW/glfw3.h>
 namespace Hazel {
 	class WindowsWindow :public Window
 	{
@@ -30,6 +30,7 @@ namespace Hazel {
 		virtual void ShutDown();
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{
